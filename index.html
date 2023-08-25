@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>应用下载页</title>
+  <style>
+    /* CSS样式 */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      background-image: url("背景图片.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 0;
+    }
+    
+    p {
+      line-height: 1.5em;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    
+    .button {
+      display: block;
+      width: 80%;
+      height: 50px;
+      margin: 20px auto 0;
+      background-color: #ff6a00;
+      color: #fff;
+      text-align: center;
+      line-height: 50px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+    }
+    
+    .button:hover {
+      background-color: #ff8c5a;
+    }
+    
+    .video-container {
+      width: 100%;
+      height: 400px; /* 设置适当的高度 */
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .image-container {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+    
+    .image-container img {
+      display: inline-block;
+      width: 90%;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .card {
+      max-width: 90%;
+      width: 400px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+    
+    .card img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>应用名称</h1>
+    <div class="card" id="card">
+      <img src="https://api.vvhan.com/api/ipCard?tip=Hello 欢迎使用" alt="卡片图片">
+    </div>
+    <p>这是一个描述应用的段落，可以介绍应用的功能、特点等等。</p>
+    <p>当前版本：1.0.0</p>
+    <div id="showcase-container" class="image-container">
+      <img src="http://file.unhis.cn/file/95705552/mmexport1683288731530.png" alt="应用截图" class="image">
+      <img src="图片2.jpg" alt="应用截图" class="image">
+      <img src="图片3.jpg" alt="应用截图" class="image">
+    </div>
+    <a href="#" class="button" id="download-button" download>下载应用</a>
+  </div>
+  <script>
+    // JS脚本
+    const card = document.getElementById('card');
+    const audio = new Audio();
+    let isPlaying = false;
+
+    card.addEventListener('click', function() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.src = 'https://api.vvhan.com/api/rand.music?sort=热歌榜';
+        audio.play();
+        isPlaying = true;
+      }
+    });
+
+    const showcaseContainer = document.getElementById('showcase-container');
+    const showVideo = false; // 根据需要设置为 true 或 false，true为视频显示，false为图片显示
+
+    if (showVideo) {
+      showcaseContainer.innerHTML = `
+        <div class="video-container">
+          <video controls>
+            <source src="https://static.blued.com/videos/ticktocks/2826544/2826544_1686239383.mp4" type="video/mp4">
+          </video>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
